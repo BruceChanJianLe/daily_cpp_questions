@@ -1,5 +1,25 @@
 > A quick refresher and daily reading!
 
+## Table of Contents
+
+- [auto and type deduction](#auto-and-type-deduction)
+- [static keyword](#static-keyword)
+- [Polymorphism, inheritance, virtual functions](#polymorphism-inheritance-virtual-functions)
+- [Lambda functions](#lambda-functions)
+- [const qualifier](#const-qualifier)
+- [Best practices in modern C++](#best-practices-in-modern-c)
+- [Smart pointers](#smart-pointers)
+- [References and move semantics](#references-and-move-semantics)
+- [C++20](#c20)
+- [Special functions](#special-functions)
+- [Object-oriented design](#object-oriented-design)
+- [Observable behaviors](#observable-behaviors)
+- [Standard Template Library](#standard-template-library)
+- [Miscellaneous](#miscellaneous)
+- [C++ and algorithmic complexities](#c-and-algorithmic-complexities)
+
+---
+
 ## auto and type deduction
 
 <details>
