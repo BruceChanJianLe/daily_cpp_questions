@@ -1,6 +1,6 @@
-> Some common C++ questions as quick refresher or daily reading
+> A quick refresher and daily reading!
 
-## Topic: auto and type deduction
+## auto and type deduction
 
 <details>
 <summary>1. Explain auto type deduction</summary>
@@ -107,7 +107,7 @@ auto c = a + b;  // int, value = 2
 
 ---
 
-## Topic: static keyword
+## static keyword
 
 <details>
 <summary>9. What does a `static` member variable mean?</summary>
@@ -170,7 +170,7 @@ int a = getB() + 1;  // safe: getB() ensures b is initialized first
 
 ---
 
-## Topic: Polymorphism, inheritance, virtual functions
+## Polymorphism, inheritance, virtual functions
 
 <details>
 <summary>13. Difference between function overloading and overriding?</summary>
@@ -404,7 +404,7 @@ void process(int x) { /* ... */ }
 
 ---
 
-## Topic: Lambda functions
+## Lambda functions
 
 <details>
 <summary>30. What are immediately invoked lambda functions?</summary>
@@ -441,7 +441,7 @@ const std::string msg = []() {
 
 ---
 
-## Topic: const qualifier
+## const qualifier
 
 <details>
 <summary>32. Output of code sample and why?</summary>
@@ -539,7 +539,7 @@ x = 10; // OK: constinit doesn't mean const
 
 ---
 
-## Topic: Best practices in modern C++
+## Best practices in modern C++
 
 <details>
 <summary>42. What is aggregate initialization?</summary>
@@ -675,7 +675,7 @@ Trivial types can be safely copied with `memcpy` and have C-compatible layout. C
 
 ---
 
-## Topic: Smart pointers
+## Smart pointers
 
 <details>
 <summary>51. Explain the RAII idiom</summary>
@@ -767,7 +767,7 @@ if (p) { *p = 5; }  // safe: checked before use
 
 ---
 
-## Topic: References and move semantics
+## References and move semantics
 
 <details>
 <summary>58. What does `std::move` move?</summary>
@@ -847,7 +847,7 @@ Declare `noexcept` when a function genuinely cannot throw (or you are willing fo
 
 ---
 
-## Topic: C++20
+## C++20
 
 <details>
 <summary>64. What are concepts in C++?</summary>
@@ -928,7 +928,7 @@ Advantages:
 
 ---
 
-## Topic: Special functions
+## Special functions
 
 <details>
 <summary>69. Explain the rule of three</summary>
@@ -1017,7 +1017,7 @@ Yes, when the default behavior would be incorrect or dangerous. Deleting them ma
 
 ---
 
-## Topic: Object-oriented design
+## Object-oriented design
 
 <details>
 <summary>77. Differences between a class and a struct?</summary>
@@ -1246,7 +1246,7 @@ Risk: objects can exist in an uninitialized (invalid) state between construction
 
 ---
 
-## Topic: Observable behaviors
+## Observable behaviors
 
 <details>
 <summary>99. What is observable behavior of code?</summary>
@@ -1330,7 +1330,7 @@ Each container has specific invalidation rules (e.g., `vector::push_back` may in
 
 ---
 
-## Topic: Standard Template Library
+## Standard Template Library
 
 <details>
 <summary>107. What is the STL?</summary>
@@ -1452,7 +1452,7 @@ Iterator categories (from weakest to strongest): Input, Output, Forward, Bidirec
 
 ---
 
-## Topic: Miscellaneous
+## Miscellaneous
 
 <details>
 <summary>117. Can you call a `virtual` function from constructor/destructor?</summary>
@@ -1834,7 +1834,7 @@ Single exit point is useful when cleanup before returning is needed, but modern 
 
 ---
 
-## Topic: C++ and algorithmic complexities
+## C++ and algorithmic complexities
 
 <details>
 <summary>147. Differences between `std::map` and `std::unordered_map`?</summary>
