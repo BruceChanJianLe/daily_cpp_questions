@@ -37,9 +37,7 @@ const auto c = x;  // const int
 </details>
 
 <details>
-<summary>
-2. When can `auto` deduce undesired types?
-</summary>
+<summary>2. When can <code>auto</code> deduce undesired types?</summary>
 
 - With `std::initializer_list`: `auto x = {1};` deduces `std::initializer_list<int>`, not `int`.
 - With proxy types: `auto bit = std::vector<bool>{true, false}[0];` deduces a proxy object, not `bool`.
@@ -49,7 +47,7 @@ const auto c = x;  // const int
 </details>
 
 <details>
-<summary>3. What are the advantages of using `auto`?</summary>
+<summary>3. What are the advantages of using <code>auto</code>?</summary>
 
 - Avoids redundant type repetition (less verbose).
 - Prevents unintentional implicit conversions.
@@ -60,7 +58,7 @@ const auto c = x;  // const int
 </details>
 
 <details>
-<summary>4. What is the type of `myCollection` after the following declaration?</summary>
+<summary>4. What is the type of <code>myCollection</code> after the following declaration?</summary>
 
 ```cpp
 std::map<std::string, std::vector<int>> myCollection;
@@ -86,7 +84,7 @@ auto multiply(T a, U b) -> decltype(a * b) { return a * b; }
 </details>
 
 <details>
-<summary>6. Explain `decltype`!</summary>
+<summary>6. Explain <code>decltype</code>!</summary>
 
 `decltype` queries the type of an expression without evaluating it. Unlike `auto`, it preserves references and cv-qualifiers exactly.
 
@@ -101,7 +99,7 @@ decltype((x)) c = x;    // int& (parenthesized expression → lvalue ref)
 </details>
 
 <details>
-<summary>7. When to use `decltype(auto)`?</summary>
+<summary>7. When to use <code>decltype(auto)</code>?</summary>
 
 Use `decltype(auto)` when you want to deduce the return type of a function while preserving references and cv-qualifiers — something `auto` alone would strip.
 
@@ -116,7 +114,7 @@ decltype(auto) g() { return getRef(); }  // returns int& (reference preserved)
 </details>
 
 <details>
-<summary>8. Which data type do you get when you add two `bool`s?</summary>
+<summary>8. Which data type do you get when you add two <code>bool</code>s?</summary>
 
 `int`. Due to integral promotion, `bool` values are promoted to `int` before arithmetic operations. `true + true` yields `2` of type `int`.
 
@@ -132,7 +130,7 @@ auto c = a + b;  // int, value = 2
 ## static keyword
 
 <details>
-<summary>9. What does a `static` member variable mean?</summary>
+<summary>9. What does a <code>static</code> member variable mean?</summary>
 
 A `static` member variable is shared across all instances of a class — there is only one copy regardless of how many objects exist. It must be defined outside the class (except `inline static` in C++17).
 
@@ -146,7 +144,7 @@ int Counter::count = 0;  // definition
 </details>
 
 <details>
-<summary>10. What does a `static` member function mean?</summary>
+<summary>10. What does a <code>static</code> member function mean?</summary>
 
 A `static` member function belongs to the class, not to any instance. It has no `this` pointer and can only access `static` members. It can be called without an object.
 
@@ -160,7 +158,7 @@ Foo::greet();  // no object needed
 </details>
 
 <details>
-<summary>11. What is the `static` initialization order fiasco?</summary>
+<summary>11. What is the <code>static</code> initialization order fiasco?</summary>
 
 When two static objects in different translation units have a dependency, the order of their initialization is undefined. If object A (in TU1) depends on object B (in TU2), B might not be initialized yet when A's constructor runs.
 
@@ -211,7 +209,7 @@ struct Derived : Base { void bar() override; }; // override
 </details>
 
 <details>
-<summary>14. What is a `virtual` function?</summary>
+<summary>14. What is a <code>virtual</code> function?</summary>
 
 A member function declared with `virtual` in a base class that can be overridden in derived classes. When called through a pointer or reference to the base class, the most-derived override is called at runtime via the vtable.
 
@@ -229,7 +227,7 @@ a->speak(); // prints "Woof"
 </details>
 
 <details>
-<summary>15. What is the `override` keyword and its advantages?</summary>
+<summary>15. What is the <code>override</code> keyword and its advantages?</summary>
 
 `override` (C++11) explicitly marks a virtual function as overriding a base class function. The compiler emits an error if no matching virtual function exists in the base — catching typos, signature mismatches, and accidental hiding.
 
@@ -320,7 +318,7 @@ struct Widget : private Timer {   // Widget uses Timer's machinery
 </details>
 
 <details>
-<summary>22. Can you call a `virtual` function from a constructor/destructor?</summary>
+<summary>22. Can you call a <code>virtual</code> function from a constructor/destructor?</summary>
 
 You can call it, but virtual dispatch does **not** work as expected. During construction/destruction, the dynamic type is the type currently being constructed/destroyed, so the base version (not an override) is called.
 
@@ -338,7 +336,7 @@ Derived d; // prints "Base"
 </details>
 
 <details>
-<summary>23. What role does a `virtual` destructor play?</summary>
+<summary>23. What role does a <code>virtual</code> destructor play?</summary>
 
 It ensures that when a derived object is deleted through a base class pointer, the derived destructor is called first (then base). Without it, only the base destructor runs, causing resource leaks.
 
@@ -352,7 +350,7 @@ delete p; // calls ~Derived then ~Base — correct
 </details>
 
 <details>
-<summary>24. Can we inherit from standard containers like `std::vector`?</summary>
+<summary>24. Can we inherit from standard containers like <code>std::vector</code>?</summary>
 
 Technically yes, but it is strongly discouraged. Standard containers have no virtual destructors, so deleting via a base pointer is undefined behavior. Prefer composition or use private inheritance if you must reuse internals.
 
@@ -408,7 +406,7 @@ struct Foo {
 </details>
 
 <details>
-<summary>29. How to use the `= delete` specifier?</summary>
+<summary>29. How to use the <code>= delete</code> specifier?</summary>
 
 `= delete` explicitly disables a function. The compiler emits an error if that function is called or selected by overload resolution.
 
@@ -473,7 +471,7 @@ const std::string msg = []() {
 </details>
 
 <details>
-<summary>33. Advantages of using `const` local variables?</summary>
+<summary>33. Advantages of using <code>const</code> local variables?</summary>
 
 - Communicates intent: value will not change.
 - Enables compiler optimizations.
@@ -483,14 +481,14 @@ const std::string msg = []() {
 </details>
 
 <details>
-<summary>34. Is it good to have `const` members in a class?</summary>
+<summary>34. Is it good to have <code>const</code> members in a class?</summary>
 
 Generally no. `const` data members prevent the compiler from generating a useful copy/move assignment operator (the class becomes non-assignable), which breaks many standard library requirements and container usage. Prefer getter functions returning `const` references instead.
 
 </details>
 
 <details>
-<summary>35. Does it make sense to return `const` objects by value?</summary>
+<summary>35. Does it make sense to return <code>const</code> objects by value?</summary>
 
 No. In modern C++ (C++11+), returning `const` by value inhibits move semantics and NRVO (Named Return Value Optimization), causing unnecessary copies. Avoid it.
 
@@ -502,7 +500,7 @@ std::string bar();        // good
 </details>
 
 <details>
-<summary>36. How should you return `const` pointers from functions?</summary>
+<summary>36. How should you return <code>const</code> pointers from functions?</summary>
 
 Return `const T*` (pointer to const) to prevent callers from modifying the pointed-to data through the returned pointer. `T* const` (const pointer) is useless by value since the caller gets their own copy of the pointer.
 
@@ -513,21 +511,21 @@ const char* getName() { return "Alice"; }  // caller can't modify the string
 </details>
 
 <details>
-<summary>37. Should functions return `const` references?</summary>
+<summary>37. Should functions return <code>const</code> references?</summary>
 
 Only when returning a reference to a member or something that outlives the function call. Never return a `const` reference to a local variable (dangling reference). Returning `const&` avoids copying large objects but ties caller lifetime to the object's lifetime.
 
 </details>
 
 <details>
-<summary>38. Should you take plain old data types by `const` reference?</summary>
+<summary>38. Should you take plain old data types by <code>const</code> reference?</summary>
 
 No. For cheap-to-copy types (`int`, `double`, `bool`, pointers), taking by value is equally or more efficient — no indirection overhead, and the compiler can optimize better. `const&` adds a pointer dereference for no benefit.
 
 </details>
 
 <details>
-<summary>39. Should you pass objects by `const` reference?</summary>
+<summary>39. Should you pass objects by <code>const</code> reference?</summary>
 
 Yes, for large or non-trivially-copyable objects. `const T&` avoids a copy while preventing modification. The guideline: pass by value if ≤ pointer-size or cheaply copyable; pass by `const&` otherwise.
 
@@ -546,7 +544,7 @@ void foo(const int x) {}  // definition — same function, const is local detail
 </details>
 
 <details>
-<summary>41. Explain `consteval` and `constinit`</summary>
+<summary>41. Explain <code>consteval</code> and <code>constinit</code></summary>
 
 - **`consteval`** (C++20): declares an **immediate function** — it *must* be evaluated at compile time. Unlike `constexpr`, calling it at runtime is a compile error.
 - **`constinit`** (C++20): asserts that a variable has **static initialization** (not dynamic). Prevents the static initialization order fiasco. The variable is not necessarily `const` — it can still be modified at runtime.
@@ -609,7 +607,7 @@ auto d = 100ms;     // std::chrono::milliseconds
 </details>
 
 <details>
-<summary>45. Why use `nullptr` instead of `NULL` or `0`?</summary>
+<summary>45. Why use <code>nullptr</code> instead of <code>NULL</code> or <code>0</code>?</summary>
 
 `nullptr` is a typed null pointer constant (`std::nullptr_t`) that only converts to pointer types. `NULL`/`0` are integers and can cause ambiguous overload resolution.
 
@@ -623,7 +621,7 @@ foo(nullptr); // unambiguously calls foo(int*)
 </details>
 
 <details>
-<summary>46. What advantages does `alias` have over `typedef`?</summary>
+<summary>46. What advantages does <code>alias</code> have over <code>typedef</code>?</summary>
 
 `using` (alias declaration, C++11) supports templates directly, is more readable, and has consistent syntax:
 
@@ -638,7 +636,7 @@ using Fn = void(*)(int);      // clearer than: typedef void(*Fn)(int);
 </details>
 
 <details>
-<summary>47. Advantages of scoped `enum`s over unscoped?</summary>
+<summary>47. Advantages of scoped <code>enum</code>s over unscoped?</summary>
 
 `enum class` (C++11):
 - Enumerators do not leak into the enclosing scope — no name collisions.
@@ -668,7 +666,7 @@ struct FileHandle {
 </details>
 
 <details>
-<summary>49. How to use the `= delete` specifier?</summary>
+<summary>49. How to use the <code>= delete</code> specifier?</summary>
 
 Apply `= delete` to any function declaration to make calling it a compile error. Common uses: disabling copy/move, preventing implicit conversions, and removing overloads.
 
@@ -755,7 +753,7 @@ if (auto sp = wp.lock()) { // check if still alive
 </details>
 
 <details>
-<summary>55. Advantages of `std::make_shared` and `std::make_unique`?</summary>
+<summary>55. Advantages of <code>std::make_shared</code> and <code>std::make_unique</code>?</summary>
 
 - **Exception safety**: no raw `new` — avoids leaks if constructor throws.
 - **`make_shared` efficiency**: allocates control block and object in a single allocation (faster, better cache locality).
@@ -776,7 +774,7 @@ For owning pointers, yes. For non-owning/observing pointers (function parameters
 </details>
 
 <details>
-<summary>57. When and why initialize pointers to `nullptr`?</summary>
+<summary>57. When and why initialize pointers to <code>nullptr</code>?</summary>
 
 Always initialize pointers that are not immediately assigned. Uninitialized pointers have indeterminate values — reading or dereferencing them is undefined behavior. A `nullptr` pointer is safe to check and compare.
 
@@ -792,7 +790,7 @@ if (p) { *p = 5; }  // safe: checked before use
 ## References and move semantics
 
 <details>
-<summary>58. What does `std::move` move?</summary>
+<summary>58. What does <code>std::move</code> move?</summary>
 
 `std::move` does not move anything — it is an **unconditional cast to an rvalue reference** (`T&&`). It signals to the compiler that the object may be "moved from," enabling the move constructor/assignment operator to steal resources rather than copy them.
 
@@ -804,7 +802,7 @@ std::string b = std::move(a); // a is now in a valid but unspecified state
 </details>
 
 <details>
-<summary>59. What does `std::forward` forward?</summary>
+<summary>59. What does <code>std::forward</code> forward?</summary>
 
 `std::forward` performs **conditional casting**: it casts to an rvalue reference only if the argument was originally an rvalue. Used in perfect forwarding to preserve the value category of template arguments.
 
@@ -845,7 +843,7 @@ This is the mechanism that makes universal references and `std::forward` work.
 </details>
 
 <details>
-<summary>62. When are `constexpr` functions evaluated?</summary>
+<summary>62. When are <code>constexpr</code> functions evaluated?</summary>
 
 A `constexpr` function *may* be evaluated at compile time when called with constant expressions and the result is needed in a constant context (e.g., array size, template argument). Otherwise it is evaluated at runtime like a regular function.
 
@@ -858,7 +856,7 @@ int x = square(runtimeVal);  // runtime
 </details>
 
 <details>
-<summary>63. When should you declare functions as `noexcept`?</summary>
+<summary>63. When should you declare functions as <code>noexcept</code>?</summary>
 
 Declare `noexcept` when a function genuinely cannot throw (or you are willing for `std::terminate` to be called if it does). Key cases:
 - Move constructors and move assignment operators (enables STL optimizations — e.g., `std::vector` reallocation uses move only if `noexcept`).
@@ -919,7 +917,7 @@ auto operator<=>(const Foo&) const = default;
 </details>
 
 <details>
-<summary>67. Explain `consteval` and `constinit`</summary>
+<summary>67. Explain <code>consteval</code> and <code>constinit</code></summary>
 
 *(See Q41 for full answer.)*
 - `consteval`: immediate function — must run at compile time.
@@ -1000,7 +998,7 @@ struct Person {
 </details>
 
 <details>
-<summary>72. What does `std::move` move?</summary>
+<summary>72. What does <code>std::move</code> move?</summary>
 
 *(See Q58.)* It is a cast to `T&&`. The actual resource transfer happens in the move constructor/assignment operator of the target type.
 
@@ -1082,7 +1080,7 @@ struct Foo {
 </details>
 
 <details>
-<summary>81. What is the `override` keyword?</summary>
+<summary>81. What is the <code>override</code> keyword?</summary>
 
 *(See Q15.)* Compiler-checked annotation that a virtual function is intentionally overriding a base class function. Makes errors visible at compile time.
 
@@ -1117,7 +1115,7 @@ log("hello", 2);  // level=2, timestamp=true
 </details>
 
 <details>
-<summary>84. What is `this` pointer and can we delete it?</summary>
+<summary>84. What is <code>this</code> pointer and can we delete it?</summary>
 
 `this` is an implicit pointer to the current object inside non-static member functions. Technically you can call `delete this` if the object was heap-allocated and you ensure no further use, but it is extremely dangerous and almost never correct.
 
@@ -1399,7 +1397,7 @@ Algorithms operating on two ranges (e.g., `std::transform`, `std::copy`) take a 
 </details>
 
 <details>
-<summary>111. How is a `vector`'s memory layout organized?</summary>
+<summary>111. How is a <code>vector</code>'s memory layout organized?</summary>
 
 `std::vector` stores elements in a **contiguous block** of heap memory. It maintains:
 - `size`: number of elements currently stored.
@@ -1429,7 +1427,7 @@ auto myCollection2 = myCollection;
 </details>
 
 <details>
-<summary>114. Advantages of `const_iterator`s over iterators?</summary>
+<summary>114. Advantages of <code>const_iterator</code>s over iterators?</summary>
 
 - Signals read-only intent — the element cannot be modified through the iterator.
 - Works on `const` containers (where only `const_iterator` is available).
@@ -1477,7 +1475,7 @@ Iterator categories (from weakest to strongest): Input, Output, Forward, Bidirec
 ## Miscellaneous
 
 <details>
-<summary>117. Can you call a `virtual` function from constructor/destructor?</summary>
+<summary>117. Can you call a <code>virtual</code> function from constructor/destructor?</summary>
 
 *(See Q22.)* Yes, but virtual dispatch does not work — the base class version is called because the derived part is not yet constructed (or already destroyed).
 
@@ -1512,7 +1510,7 @@ p->foo(); // calls Derived::foo but x = 1 (Base's default)!
 </details>
 
 <details>
-<summary>121. Function of the `mutable` keyword?</summary>
+<summary>121. Function of the <code>mutable</code> keyword?</summary>
 
 `mutable` allows a member variable to be modified even in a `const` member function. Used for caching/lazy evaluation where logical constness is preserved but internal state changes.
 
@@ -1529,7 +1527,7 @@ struct Cache {
 </details>
 
 <details>
-<summary>122. Function of the `volatile` keyword?</summary>
+<summary>122. Function of the <code>volatile</code> keyword?</summary>
 
 `volatile` tells the compiler that a variable may change outside the program's control (hardware register, signal handler, another thread at the hardware level). It prevents the compiler from caching the value in a register or reordering accesses to it.
 
@@ -1667,7 +1665,7 @@ Widget w{};   // OK: value-initializes a Widget object
 </details>
 
 <details>
-<summary>134. What is `std::string_view`?</summary>
+<summary>134. What is <code>std::string_view</code>?</summary>
 
 A non-owning, read-only reference to a character sequence (C++17). It stores a pointer and a length — no heap allocation. Useful as a function parameter to accept `std::string`, `const char*`, and string literals without copying.
 
@@ -1859,7 +1857,7 @@ Single exit point is useful when cleanup before returning is needed, but modern 
 ## C++ and algorithmic complexities
 
 <details>
-<summary>147. Differences between `std::map` and `std::unordered_map`?</summary>
+<summary>147. Differences between <code>std::map</code> and <code>std::unordered_map</code>?</summary>
 
 | | `std::map` | `std::unordered_map` |
 |---|---|---|
