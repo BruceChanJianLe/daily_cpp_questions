@@ -37,7 +37,9 @@ const auto c = x;  // const int
 </details>
 
 <details>
-<summary>2. When can `auto` deduce undesired types?</summary>
+<summary>
+2. When can `auto` deduce undesired types?
+</summary>
 
 - With `std::initializer_list`: `auto x = {1};` deduces `std::initializer_list<int>`, not `int`.
 - With proxy types: `auto bit = std::vector<bool>{true, false}[0];` deduces a proxy object, not `bool`.
